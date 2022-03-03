@@ -16,9 +16,9 @@ import org.springframework.xml.xsd.XsdSchema;
 public class SoapConfig {
 	@Bean
 	public XsdSchema surchargeSchema() {
-		return new SimpleXsdSchema(new ClassPathResource("surcharge.xsd"));
+		return new SimpleXsdSchema(new ClassPathResource("xsd/surcharge.xsd"));
 	}
-	
+
 	@Bean(name = "surcharge")
 	public DefaultWsdl11Definition defaultWsdl11Definition(XsdSchema surchargeSchema) {
 		DefaultWsdl11Definition definition = new DefaultWsdl11Definition();
@@ -28,7 +28,7 @@ public class SoapConfig {
 		definition.setSchema(surchargeSchema);
 		return definition;
 	}
-	
+
 	@Bean
 	public ServletRegistrationBean messageDispatcherServlet(ApplicationContext context) {
 		MessageDispatcherServlet messageDispatcherServlet = new MessageDispatcherServlet();
